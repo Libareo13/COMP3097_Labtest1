@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var correct = 0
     @State private var wrong = 0
     @State private var attempts = 0
+    @State private var result: Bool? = nil
 
     func isPrime(_ n: Int) -> Bool {
         if n < 2 { return false }
