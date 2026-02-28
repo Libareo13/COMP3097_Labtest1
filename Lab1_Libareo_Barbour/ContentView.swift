@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -17,6 +16,16 @@ struct ContentView: View {
         return true
     }
 
+    func checkAnswer(userPrime: Bool) {
+        let right = isPrime(number) == userPrime
+
+        if right { correct += 1 }
+        else { wrong += 1 }
+
+        attempts += 1
+        result = right
+    }
+
     var body: some View {
         VStack(spacing: 30) {
 
@@ -24,9 +33,13 @@ struct ContentView: View {
                 .font(.system(size: 80, weight: .bold))
                 .foregroundColor(.green)
 
-            Button("Prime") {}
+            Button("Prime") {
+                checkAnswer(userPrime: true)
+            }
 
-            Button("non Prime") {}
+            Button("non Prime") {
+                checkAnswer(userPrime: false)
+            }
         }
     }
 }
