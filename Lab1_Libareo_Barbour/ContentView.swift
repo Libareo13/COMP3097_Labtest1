@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ContentView: View {
@@ -8,6 +7,7 @@ struct ContentView: View {
     @State private var wrong = 0
     @State private var attempts = 0
     @State private var result: Bool? = nil
+    @State private var showAlert = false
 
     func isPrime(_ n: Int) -> Bool {
         if n < 2 { return false }
@@ -26,6 +26,10 @@ struct ContentView: View {
 
         attempts += 1
         result = right
+
+        if attempts % 10 == 0 {
+            showAlert = true
+        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             number = Int.random(in: 2...100)
@@ -59,6 +63,11 @@ struct ContentView: View {
             }
 
             Spacer()
+        }
+        .alert("Results", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Correct: \(correct)\nWrong: \(wrong)")
         }
     }
 }
