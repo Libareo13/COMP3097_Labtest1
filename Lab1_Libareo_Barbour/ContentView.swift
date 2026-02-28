@@ -1,24 +1,14 @@
-//
-//  ContentView.swift
-//  Lab1_Libareo_Barbour
-//
-//  Created by Libareo Barbour on 2026-02-27.
-//
 
 import SwiftUI
 
 struct ContentView: View {
+    @State private var number = Int.random(in: 2...100)
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("\(number)")
+                .font(.system(size: 72))
+                .foregroundColor(.green)
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
