@@ -11,30 +11,46 @@ struct ContentView: View {
     @State private var timer: Timer? = nil
     @State private var timeRemaining = 5
     var body: some View {
-        VStack(spacing: 40) {
+        VStack {
+            Spacer()
             Text("\(number)")
-                .font(.system(size: 60))
-            Button("Prime") {
+                .font(.system(size: 80, weight: .bold, design: .rounded))
+                .foregroundColor(.green)
+                .italic()
+                .padding(.bottom, 10)
+            Button(action: {
                 checkAnswer(userChoice: true)
+            }) {
+                Text("Prime")
+                    .font(.system(size: 28))
+                    .italic()
+                    .foregroundColor(.gray)
             }
-            Button("Not Prime") {
+            .padding(.bottom, 5)
+            Button(action: {
                 checkAnswer(userChoice: false)
+            }) {
+                Text("non Prime")
+                    .font(.system(size: 28))
+                    .italic()
+                    .foregroundColor(.gray)
             }
+            Spacer()
             if showCorrect {
                 Image(systemName: "checkmark")
-                    .resizable()
-                    .frame(width: 80, height: 80)
+                    .font(.system(size: 120, weight: .bold))
                     .foregroundColor(.green)
             }
             if showWrong {
                 Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 80, height: 80)
+                    .font(.system(size: 120, weight: .bold))
                     .foregroundColor(.red)
             }
+            Spacer()
             Text("\(attempts)")
                 .font(.caption)
                 .foregroundColor(.gray)
+                .padding(.bottom, 20)
         }
         .alert("Results after \(attempts) attempts",
                isPresented: $showDialog) {
