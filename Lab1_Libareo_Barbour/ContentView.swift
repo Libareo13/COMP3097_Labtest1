@@ -49,6 +49,16 @@ struct ContentView: View {
         number = Int.random(in: 1...100)
         isPrimeNumber = isPrime(number)
     }
+    func startTimer() {
+        timer?.invalidate()
+        timeRemaining = 5
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            timeRemaining -= 1
+            if timeRemaining <= 0 {
+                timer?.invalidate()
+            }
+        }
+    }
     func checkAnswer(userChoice: Bool) {
         attempts += 1
         if userChoice == isPrimeNumber {
