@@ -32,8 +32,11 @@ struct ContentView: View {
                     .frame(width: 80, height: 80)
                     .foregroundColor(.red)
             }
+            Text("\(attempts)")
+                .font(.caption)
+                .foregroundColor(.gray)
         }
-        .alert("Results",
+        .alert("Results after \(attempts) attempts",
                isPresented: $showDialog) {
             Button("OK") {
                 resetGame()
