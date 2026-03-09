@@ -77,6 +77,7 @@ struct ContentView: View {
         }
     }
     func checkAnswer(userChoice: Bool) {
+        timer?.invalidate()
         attempts += 1
         if userChoice == isPrimeNumber {
             correctCount += 1
@@ -94,6 +95,7 @@ struct ContentView: View {
                 generateNumber()
                 showCorrect = false
                 showWrong = false
+                startTimer()
             }
         }
     }
@@ -102,6 +104,7 @@ struct ContentView: View {
         wrongCount = 0
         attempts = 0
         generateNumber()
+        startTimer()
     }
     func isPrime(_ num: Int) -> Bool {
         if num < 2 { return false }
