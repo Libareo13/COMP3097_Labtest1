@@ -56,6 +56,22 @@ struct ContentView: View {
             timeRemaining -= 1
             if timeRemaining <= 0 {
                 timer?.invalidate()
+                handleTimeout()
+            }
+        }
+    }
+    func handleTimeout() {
+        wrongCount += 1
+        attempts += 1
+        showWrong = true
+        showCorrect = false
+        if attempts == 10 {
+            showDialog = true
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                showWrong = false
+                generateNumber()
+                startTimer()
             }
         }
     }
