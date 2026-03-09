@@ -127,10 +127,9 @@ struct ContentView: View {
     }
     func isPrime(_ num: Int) -> Bool {
         if num < 2 { return false }
-        for i in 2..<num {
-            if num % i == 0 {
-                return false
-            }
+        if num < 4 { return true }
+        for i in 2...Int(Double(num).squareRoot()) {
+            if num % i == 0 { return false }
         }
         return true
     }
