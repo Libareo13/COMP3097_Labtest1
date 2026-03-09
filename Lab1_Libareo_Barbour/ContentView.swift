@@ -1,3 +1,13 @@
+//
+//  ContentView.swift
+//  Lab1_Libareo_Barbour
+//
+//  Created by Libareo Barbour
+//  Student ID: 101499536
+//  COMP3097 - Mobile Applications
+//  George Brown College
+//
+
 import SwiftUI
 struct ContentView: View {
     @State private var number = Int.random(in: 1...100)
